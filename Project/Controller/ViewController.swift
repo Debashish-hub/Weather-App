@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var yourCity: UILabel!// your picked or typed city
     
+    @IBOutlet weak var checkWeatherBtn: UIButton! //Button
     
     //list of city in picker
     let cityPicks = ["Bhubaneswar", "Mumbai", "Delhi", "Bangalore", "Ahmedabad", "Chennai", "Kolkata", "Hyderabad", "Pune", "Surat", "Jaipur", "Lucknow", "Bhopal", "Thane"]
@@ -22,11 +23,14 @@ class ViewController: UIViewController {
     
     
     let lUtility = LocationManager.instance // instance of LocationManager
-
+    var ChoosenCity = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //making the button inviseble initially, button will be visible after entering city
+        checkWeatherBtn.isEnabled = false
         
         enteredCity.delegate = self
         
@@ -35,11 +39,18 @@ class ViewController: UIViewController {
         pickerView.dataSource = self
         pickedCity.inputView = pickerView
     }
+    
+    //passing value of city
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let wVC = segue.destination as! WeatherTodayVC
+        wVC.city = ChoosenCity
+    }
 
     @IBAction func getLocationClicked(_ sender: Any) {
         if lUtility.startTracking() {
             print("Tracking Started")
             updateInfo()
+            checkWeatherBtn.isEnabled = true
         }
         else {
             print("Check permission")
@@ -49,7 +60,7 @@ class ViewController: UIViewController {
     func updateInfo() {
         lUtility.getCurrentAddress { (addr) in
             print("Current Address: \(addr)")
-            //self.ct = addr
+            self.ChoosenCity = addr
             self.yourCity.text = "Your City : \(addr)"
         }
     }
@@ -71,8 +82,9 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource{
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickedCity.text = cityPicks[row]
+        checkWeatherBtn.isEnabled = true
         yourCity.text = "Your city : \(cityPicks[row])"
-        //ct = cityPicks[row]
+        ChoosenCity = cityPicks[row]
         pickedCity.resignFirstResponder()
     }
 }
@@ -96,8 +108,9 @@ extension ViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city = enteredCity.text {
+            checkWeatherBtn.isEnabled = true
             yourCity.text = "Your city : \(city)"
-//            ct = city
+            self.ChoosenCity = city
         }
         enteredCity.text = ""
     }
