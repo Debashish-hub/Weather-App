@@ -42,7 +42,12 @@ class WeatherTodayVC: UIViewController {
         print("Longitude : \(lon)")
     }
     
-    
+    //passing value of lat and lon
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let hVC = segue.destination as! HourlyVC
+        hVC.lon = lon
+        hVC.lat = lat
+    }
 
     /*
     // MARK: - Navigation

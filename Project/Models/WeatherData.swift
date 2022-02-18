@@ -9,7 +9,7 @@ import Foundation
 
 struct TodayWeather: Codable {
     let name: String
-    let dt: Date
+    let dt: Double
     let coord: Coord
     let main: Main
     let weather: [Weather]
@@ -40,7 +40,7 @@ struct Sys: Codable {
 
 //weekly weather
 struct DailyResult: Codable{
-    var dt : Date
+    var dt : Double
     var humidity : Int
     var temp : temp
     var wind_speed : Double
@@ -57,7 +57,7 @@ struct temp : Codable{
 
 //hourly weather
 struct HourlyResult:Codable{
-    var dt : Date
+    var dt : Double
     var temp : Double
     var humidity : Double
     var wind_speed : Double
