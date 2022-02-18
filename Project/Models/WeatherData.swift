@@ -7,14 +7,17 @@
 
 import Foundation
 
+struct Current: Codable{
+    var dt: Double
+    var sunset: Double
+    var sunrise: Double
+    var temp: Double
+    var weather: [Weather]
+}
+
 struct TodayWeather: Codable {
-    let name: String
-    let dt: Double
-    let coord: Coord
-    let main: Main
-    let weather: [Weather]
-    let sys: Sys
-    let wind: Wind
+    var current : Current
+    
 }
 
 struct Coord: Codable{
@@ -22,8 +25,8 @@ struct Coord: Codable{
     let lat: Double
 }
 struct Weather: Codable {
-    let description: String
-    let icon: String
+    var description: String
+    var icon: String
 }
 struct Main: Codable {
     let temp: Double

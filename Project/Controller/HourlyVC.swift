@@ -11,12 +11,18 @@ class HourlyVC: UIViewController {
 
     @IBOutlet weak var table: UITableView!
 
+    @IBOutlet weak var hourlyL: UILabel!
+    
     @IBOutlet weak var temperatureType: UISegmentedControl!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var hourlyList : [HourlyResult] = []
     
     var lat = 0.0
     var lon = 0.0
+    
+    var celsius = true
     
     var LDate = weatherUtility()
     
@@ -24,11 +30,19 @@ class HourlyVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+1){
+            self.activityIndicator.stopAnimating()
+            self.table.isHidden = false
+            self.hourlyL.isHidden = false
+            self.temperatureType.isHidden = false
+        }
+        
         table.delegate = self
         table.dataSource = self
         
         //design table
-        table.separatorStyle = .none
+        table.separatorColor = .blue
         table.showsVerticalScrollIndicator = false
         
         
@@ -40,19 +54,29 @@ class HourlyVC: UIViewController {
         print("currentLong:\(lon)")
     }
     
-
+    @IBAction func temperaturePicker(_ sender: Any) {
+        switch temperatureType.selectedSegmentIndex{
+        case 1:
+            celsius = false
+            
+        default:
+            celsius = true
+        }
+        table.reloadData()
+    }
+    
 
 }
 
 extension HourlyVC : UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 170
     }
 }
 
 extension HourlyVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hourlyList.count
+        return hourlyList.count - 24
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,11 +84,21 @@ extension HourlyVC: UITableViewDataSource{
         
         
         let std = hourlyList[indexPath.row]
-        cell.maxTemperature.text = "Temperature : \(std.temp) \u{00B0}C"
+        if celsius{
+            cell.maxTemperature.text = "Temp : \(std.temp) \u{00B0} C"
+        }else{
+            cell.maxTemperature.text = "Temp : \(Float(std.temp * 1.8 + 32)) \u{00B0} F"
+        }
+        
         cell.timeLabel.text = "\(LDate.getTime(dt: std.dt))"
-        cell.windspeedLabel.text = "Wind Speed : \(std.wind_speed) "
-        cell.descriptionLabel.text = std.weather.description
+        cell.windspeedLabel.text = "Wind Speed : \(std.wind_speed) m/s"
+        cell.descriptionLabel.text = std.weather[0].description.capitalized
         cell.humidityLabel.text = "Humidity : \(std.humidity)"
+        
+        let imgURL = "http://openweathermap.org/img/wn/\(std.weather[0].icon)@2x.png"// HTTP does not work
+        AFUtility.instance.downloadImage(imgURL: imgURL) { (imgData) in
+            cell.iconLabel.image = UIImage(data: imgData)
+        }
         //cell.iconL.image = UIImage(named: "person")
 //        cell.humidityLabel.text = "Humidity : 80%"
 //        cell.maxTemperature.text = "Temp : 35° C"

@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 class AFUtility{
-    let apikey = ""
+    let apikey = "550040b2f0736f744e56e78efb1ac593"
     private init(){}
     
     static var instance  = AFUtility()
@@ -71,6 +71,32 @@ class AFUtility{
                     
                 case .success(let data):
                     print("Response received:\(data.hourly.count)")
+                    completion(data)
+                case .failure(let err):
+                    print("Unable to get response:\(String(describing: err.errorDescription))")
+                }
+            }
+            else{
+                print("Error:\(resp.error?.localizedDescription ?? "some errior")")
+            }
+        }
+    }
+    func getToday(Lat:Double,Long:Double,completion: @escaping(TodayWeather)->Void){
+        let openURL = "https://api.openweathermap.org/data/2.5/onecall?lat=\(Lat)&lon=\(Long)&exclude=hourly,minutely,alerts,daily&units=metric&appid=\(apikey)"
+        print("URL:\(openURL)")
+        guard let url = URL(string: openURL)else{
+            print("Failed to get URL")
+            return
+        }
+        print("process Success")
+        Session.default.request(url).responseDecodable(of: TodayWeather.self){ (resp) in
+            print("Working..")
+            if resp.error == nil {
+                print("Success")
+                switch resp.result{
+                    
+                case .success(let data):
+                    print("Response received:")
                     completion(data)
                 case .failure(let err):
                     print("Unable to get response:\(String(describing: err.errorDescription))")

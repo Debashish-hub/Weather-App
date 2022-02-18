@@ -20,13 +20,20 @@ class weatherUtility{
     
     
     func getDate(dt:Double)->String{
-        
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MM yyyy"
+        formatter.dateFormat =  "E, MMM, d"//"dd MM yyyy"
         let  stringDate = formatter.string(from: Date(timeIntervalSince1970: TimeInterval(dt)))
         return stringDate
     }
     
+    func sunTime(time : Double) -> String {
+        let sun = Date(timeIntervalSince1970:  time)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .medium
+        
+        let formattedTime = formatter.string(from: sun)
+        return formattedTime
+    }
     
-
 }
