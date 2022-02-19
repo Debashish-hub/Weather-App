@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LocationFound
 
 class WeatherTodayVC: UIViewController {
     
@@ -39,7 +40,8 @@ class WeatherTodayVC: UIViewController {
     var today : Current?
     
     var city = ""
-    let lUtility = LocationManager.instance // instance of LocationManager
+    //let lUtility = LocationManager.instance // instance of LocationManager
+    let lUtility = LocationFound.LocationManager() //getting from framework
     var lat = 0.0
     var lon = 0.0
     let d = DailyVC()
@@ -67,17 +69,44 @@ class WeatherTodayVC: UIViewController {
             self.hrBtn.isHidden = false
             self.dlBtn.isHidden = false
             self.todayL.isHidden = false
+            if self.sunsetLabel.text == "Sunset" {
+                print("Got it")
+                self.showAlert()
+            }
         }
         
         placeLabel.text = city
         lUtility.getGeoCoord(address: city) { (loc) in
             self.lat = loc.coordinate.latitude
             self.lon = loc.coordinate.longitude
+            print("Latitude : \(self.lat)")
+            print("Longitude : \(self.lon)")
+            
+            
             AFUtility.instance.getToday(Lat: self.lat, Long: self.lon) { [self] (Data) in
                 self.today = Data.current
                 self.descL.text = self.today?.weather[0].description.capitalized
                 self.temperatureL.text = "\(self.today?.temp ?? 0.0)\u{00B0}C"
                 self.temp = self.today?.temp ?? 0.0
+                
+                //setting background according to temperature
+                if self.temp > 30 {
+                    //background image
+                    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+                    backgroundImage.image = UIImage(named: "Sunny")
+                    backgroundImage.contentMode = .scaleAspectFill
+                    self.view.insertSubview(backgroundImage, at: 0)
+                }else if self.temp > 16{
+                    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+                    backgroundImage.image = UIImage(named: "Night")
+                    backgroundImage.contentMode = .scaleAspectFill
+                    self.view.insertSubview(backgroundImage, at: 0)
+                }else{
+                    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+                    backgroundImage.image = UIImage(named: "ColdDay")
+                    backgroundImage.contentMode = .scaleAspectFill
+                    self.view.insertSubview(backgroundImage, at: 0)
+                }
                 fahrenheit = Float(temp * 1.8 + 32)
                 self.sunsetLabel.text = "Sunset : \(self.LDate.sunTime(time: self.today?.sunset ?? 0.0))"
                 self.sunriseLabel.text = "Sunrise : \(self.LDate.sunTime(time: self.today?.sunrise ?? 0.0))"
@@ -91,8 +120,7 @@ class WeatherTodayVC: UIViewController {
             //self.temperatureLabel.text = "\(today)"
             
         }
-        print("Latitude : \(self.lat)")
-        print("Longitude : \(self.lon)")
+        
         
         //setting values for daily and hourly updates
         self.d.lat = self.lat
@@ -114,4 +142,13 @@ class WeatherTodayVC: UIViewController {
         }
     }
     
+    func showAlert(){
+        let alert = UIAlertController(title: "Error!!", message: "Please Enter a Correct City", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { action in
+            self.navigationController?.popViewController(animated: true)
+            print("Tapped")
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
 }

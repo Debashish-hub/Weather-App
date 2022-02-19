@@ -14,7 +14,6 @@
 		D31BE09D27BE1CC0008EE7DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31BE09B27BE1CC0008EE7DE /* Main.storyboard */; };
 		D31BE09F27BE1CC1008EE7DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D31BE09E27BE1CC1008EE7DE /* Assets.xcassets */; };
 		D31BE0A227BE1CC1008EE7DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31BE0A027BE1CC1008EE7DE /* LaunchScreen.storyboard */; };
-		D38DB29827BE69B60019526E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38DB29727BE69B60019526E /* LocationManager.swift */; };
 		D38DB29B27BE88890019526E /* WeatherTodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38DB29A27BE88890019526E /* WeatherTodayVC.swift */; };
 		D38DB29D27BE8E370019526E /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38DB29C27BE8E370019526E /* WeatherData.swift */; };
 		D38DB29F27BEA1190019526E /* DailyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38DB29E27BEA1190019526E /* DailyVC.swift */; };
@@ -35,7 +34,6 @@
 		D31BE09E27BE1CC1008EE7DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D31BE0A127BE1CC1008EE7DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D31BE0A327BE1CC1008EE7DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D38DB29727BE69B60019526E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D38DB29A27BE88890019526E /* WeatherTodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTodayVC.swift; sourceTree = "<group>"; };
 		D38DB29C27BE8E370019526E /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		D38DB29E27BEA1190019526E /* DailyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVC.swift; sourceTree = "<group>"; };
@@ -100,10 +98,9 @@
 			children = (
 				D31BE09527BE1CC0008EE7DE /* AppDelegate.swift */,
 				D31BE09727BE1CC0008EE7DE /* SceneDelegate.swift */,
+				D3C0CBCB27BFFD5900B7C06C /* Views */,
 				D38DB29927BE7E9A0019526E /* Models */,
 				D38DB29627BE692A0019526E /* Controller */,
-				D31BE09B27BE1CC0008EE7DE /* Main.storyboard */,
-				D31BE0A027BE1CC1008EE7DE /* LaunchScreen.storyboard */,
 				D31BE09E27BE1CC1008EE7DE /* Assets.xcassets */,
 				D31BE0A327BE1CC1008EE7DE /* Info.plist */,
 			);
@@ -126,12 +123,20 @@
 		D38DB29927BE7E9A0019526E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D38DB29727BE69B60019526E /* LocationManager.swift */,
 				D38DB29C27BE8E370019526E /* WeatherData.swift */,
 				D3C0CBC527BF4B0D00B7C06C /* AFUtility.swift */,
 				D3C0CBC727BF5CAF00B7C06C /* weatherUtility.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D3C0CBCB27BFFD5900B7C06C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D31BE09B27BE1CC0008EE7DE /* Main.storyboard */,
+				D31BE0A027BE1CC1008EE7DE /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +254,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D38DB29827BE69B60019526E /* LocationManager.swift in Sources */,
 				D31BE09A27BE1CC0008EE7DE /* ViewController.swift in Sources */,
 				D31BE09627BE1CC0008EE7DE /* AppDelegate.swift in Sources */,
 				D3C0CBC827BF5CAF00B7C06C /* weatherUtility.swift in Sources */,
@@ -410,6 +414,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = THMR67H53F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Project/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -438,6 +443,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = THMR67H53F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Project/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

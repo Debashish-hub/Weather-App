@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LocationFound
 
 class ViewController: UIViewController {
 
@@ -22,12 +23,19 @@ class ViewController: UIViewController {
     var pickerView = UIPickerView()
     
     
-    let lUtility = LocationManager.instance // instance of LocationManager
+    //let lUtility = LocationManager.instance // instance of LocationManager
+    let lUtility = LocationFound.LocationManager() //getting from framework
     var ChoosenCity = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //background image
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "H2")
+        backgroundImage.contentMode = .scaleAspectFill
+        view.insertSubview(backgroundImage, at: 0)
         
         //making the button inviseble initially, button will be visible after entering city
         checkWeatherBtn.isEnabled = false
@@ -63,6 +71,15 @@ class ViewController: UIViewController {
             self.ChoosenCity = addr
             self.yourCity.text = "Your City : \(addr)"
         }
+    }
+    func showAlert(){
+        let alert = UIAlertController(title: "Error!!", message: "Please Enter a Correct City", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { action in
+            self.navigationController?.popViewController(animated: true)
+            print("Tapped")
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
     
 }
@@ -109,8 +126,16 @@ extension ViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city = enteredCity.text {
             checkWeatherBtn.isEnabled = true
-            yourCity.text = "Your city : \(city)"
-            self.ChoosenCity = city
+            yourCity.text = "Your city : \(city.capitalized)"
+            self.ChoosenCity = city.capitalized
+//            LocationManager.instance.getGeoCoord(address: city) { (loc) in
+//                if loc.coordinate.latitude >= -180 && loc.coordinate.longitude <= 180{
+//
+//                }else{
+//                    self.showAlert()
+//                }
+//
+//            }
         }
         enteredCity.text = ""
     }

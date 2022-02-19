@@ -159,7 +159,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9h-Nm-87s">
-                                <rect key="frame" x="30" y="742" width="120" height="40"/>
+                                <rect key="frame" x="30" y="764" width="120" height="40"/>
                                 <color key="backgroundColor" red="0.97491140460000003" green="0.73035976530000002" blue="0.42154445130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="SnB-RH-dEd"/>
@@ -186,18 +186,6 @@
                                     <action selector="temperaturePicker:" destination="0PW-hE-fwt" eventType="valueChanged" id="HYB-MN-XFP"/>
                                 </connections>
                             </segmentedControl>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gq-Bi-hfS">
-                                <rect key="frame" x="263" y="743" width="121" height="38"/>
-                                <color key="backgroundColor" red="0.97491140460000003" green="0.73035976530000002" blue="0.42154445130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Hourly">
-                                    <color key="titleColor" red="0.1135454925" green="0.14466297780000001" blue="0.46331346649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Na5-vF-cuI" kind="show" id="ArF-72-Esq"/>
-                                </connections>
-                            </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWf-lw-yGE">
                                 <rect key="frame" x="30" y="638.5" width="354" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -213,6 +201,18 @@
                                 <rect key="frame" x="100" y="361" width="194" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gq-Bi-hfS">
+                                <rect key="frame" x="257" y="764" width="121" height="40"/>
+                                <color key="backgroundColor" red="0.97491140460000003" green="0.73035976530000002" blue="0.42154445130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Hourly">
+                                    <color key="titleColor" red="0.1135454925" green="0.14466297780000001" blue="0.46331346649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Na5-vF-cuI" kind="show" id="ArF-72-Esq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Pfx-wW-ZOt"/>
                         <color key="backgroundColor" red="0.60590744409999997" green="0.71890815360000004" blue="0.80726533759999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -223,7 +223,7 @@
                             <constraint firstItem="2Gq-Bi-hfS" firstAttribute="width" secondItem="g9h-Nm-87s" secondAttribute="width" multiplier="1.00833" id="76V-to-z1I"/>
                             <constraint firstItem="m7x-do-UK6" firstAttribute="top" secondItem="RQU-de-U2B" secondAttribute="bottom" constant="20" id="7Yf-it-URp"/>
                             <constraint firstItem="Pfx-wW-ZOt" firstAttribute="trailing" secondItem="m7x-do-UK6" secondAttribute="trailing" constant="36" id="9Jx-O8-mZN"/>
-                            <constraint firstItem="LOf-IP-uNV" firstAttribute="leading" secondItem="Pfx-wW-ZOt" secondAttribute="leading" constant="120" id="AWB-rx-gZO"/>
+                            <constraint firstItem="LOf-IP-uNV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Pfx-wW-ZOt" secondAttribute="leading" constant="120" id="AWB-rx-gZO"/>
                             <constraint firstItem="Pfx-wW-ZOt" firstAttribute="trailing" secondItem="a3s-c7-J6B" secondAttribute="trailing" constant="30" id="CGS-La-0BM"/>
                             <constraint firstItem="X1e-KN-2aW" firstAttribute="top" secondItem="Pfx-wW-ZOt" secondAttribute="top" constant="10" id="CRP-s8-T3k"/>
                             <constraint firstItem="Pfx-wW-ZOt" firstAttribute="trailing" secondItem="sWf-lw-yGE" secondAttribute="trailing" constant="30" id="HwK-0H-9Fu"/>
@@ -234,16 +234,16 @@
                             <constraint firstItem="2Gq-Bi-hfS" firstAttribute="centerY" secondItem="g9h-Nm-87s" secondAttribute="centerY" id="PUI-EC-Dme"/>
                             <constraint firstItem="g9h-Nm-87s" firstAttribute="leading" secondItem="Pfx-wW-ZOt" secondAttribute="leading" constant="30" id="Q64-Ae-Xrl"/>
                             <constraint firstItem="KDl-Pi-8iJ" firstAttribute="top" secondItem="a3s-c7-J6B" secondAttribute="bottom" constant="8" id="RKe-Om-PvX"/>
-                            <constraint firstItem="Pfx-wW-ZOt" firstAttribute="trailing" secondItem="LOf-IP-uNV" secondAttribute="trailing" constant="120" id="RYE-uo-SL6"/>
-                            <constraint firstItem="Pfx-wW-ZOt" firstAttribute="bottom" secondItem="g9h-Nm-87s" secondAttribute="bottom" constant="80" id="SsL-E3-PvA"/>
+                            <constraint firstItem="Pfx-wW-ZOt" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="LOf-IP-uNV" secondAttribute="trailing" constant="120" id="RYE-uo-SL6"/>
+                            <constraint firstItem="Pfx-wW-ZOt" firstAttribute="bottom" secondItem="g9h-Nm-87s" secondAttribute="bottom" constant="58" id="SsL-E3-PvA"/>
                             <constraint firstItem="LOf-IP-uNV" firstAttribute="top" secondItem="m7x-do-UK6" secondAttribute="bottom" constant="15" id="ca3-3d-EGs"/>
                             <constraint firstItem="GUK-Cj-6od" firstAttribute="top" secondItem="X1e-KN-2aW" secondAttribute="bottom" constant="30" id="chM-k9-6RP"/>
                             <constraint firstItem="RQU-de-U2B" firstAttribute="leading" secondItem="Pfx-wW-ZOt" secondAttribute="leading" constant="10" id="cqS-OY-Sfx"/>
                             <constraint firstItem="a3s-c7-J6B" firstAttribute="top" secondItem="GUK-Cj-6od" secondAttribute="bottom" constant="8" id="dCu-0B-h4t"/>
                             <constraint firstItem="RQU-de-U2B" firstAttribute="top" secondItem="KDl-Pi-8iJ" secondAttribute="bottom" constant="10" id="dsh-4f-Zbl"/>
                             <constraint firstItem="Och-Zx-afX" firstAttribute="leading" secondItem="Pfx-wW-ZOt" secondAttribute="leading" constant="40" id="hOa-Zl-iF6"/>
-                            <constraint firstItem="Pfx-wW-ZOt" firstAttribute="trailing" secondItem="2Gq-Bi-hfS" secondAttribute="trailing" constant="30" id="jT2-Hn-tMf"/>
-                            <constraint firstItem="Pfx-wW-ZOt" firstAttribute="bottom" secondItem="2Gq-Bi-hfS" secondAttribute="bottom" constant="81" id="oXl-5J-XSE"/>
+                            <constraint firstItem="Pfx-wW-ZOt" firstAttribute="trailing" secondItem="2Gq-Bi-hfS" secondAttribute="trailing" constant="36" id="jT2-Hn-tMf"/>
+                            <constraint firstItem="Pfx-wW-ZOt" firstAttribute="bottom" secondItem="2Gq-Bi-hfS" secondAttribute="bottom" constant="58" id="oXl-5J-XSE"/>
                             <constraint firstItem="Och-Zx-afX" firstAttribute="top" secondItem="LOf-IP-uNV" secondAttribute="bottom" constant="36" id="pDy-PO-60n"/>
                             <constraint firstItem="m7x-do-UK6" firstAttribute="leading" secondItem="Pfx-wW-ZOt" secondAttribute="leading" constant="24" id="qTw-44-3ZY"/>
                             <constraint firstItem="a3s-c7-J6B" firstAttribute="leading" secondItem="Pfx-wW-ZOt" secondAttribute="leading" constant="30" id="r0Q-2d-iIX"/>

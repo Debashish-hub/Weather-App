@@ -29,7 +29,8 @@ class DailyVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        table.backgroundView = UIImageView(image: UIImage(named: "H3"))
+
         DispatchQueue.main.asyncAfter(deadline: .now()+1){
             self.activityIndicator.stopAnimating()
             self.table.isHidden = false
@@ -49,8 +50,12 @@ class DailyVC: UIViewController {
             self.dailyList = data.daily
             self.table.reloadData()
         }
-        print(lat)
-        print(lon)
+        //background image
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "H1")
+        backgroundImage.contentMode = .scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
+        
     }
     
     @IBAction func temperatureType(_ sender: Any) {

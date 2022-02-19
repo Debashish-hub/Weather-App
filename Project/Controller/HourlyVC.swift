@@ -50,8 +50,11 @@ class HourlyVC: UIViewController {
             self.hourlyList = data.hourly
             self.table.reloadData()
         }
-        print("currentLat:\(lat)")
-        print("currentLong:\(lon)")
+        //background image
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "H3")
+        backgroundImage.contentMode = .scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
     }
     
     @IBAction func temperaturePicker(_ sender: Any) {
