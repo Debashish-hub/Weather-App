@@ -55,6 +55,7 @@ class ViewController: UIViewController {
         wVC.city = ChoosenCity
     }
 
+
     @IBAction func getLocationClicked(_ sender: Any) {
         if lUtility.startTracking() {
             print("Tracking Started")
@@ -73,16 +74,6 @@ class ViewController: UIViewController {
             self.yourCity.text = "Your City : \(addr)"
         }
     }
-    func showAlert(){
-        let alert = UIAlertController(title: "Error!!", message: "Please Enter a Correct City", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { action in
-            self.navigationController?.popViewController(animated: true)
-            print("Tapped")
-        }))
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
 }
 
 

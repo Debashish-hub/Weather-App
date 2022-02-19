@@ -8,7 +8,7 @@
 import UIKit
 
 class DailyVC: UIViewController {
-
+    
     @IBOutlet weak var table: UITableView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -17,7 +17,9 @@ class DailyVC: UIViewController {
     
     @IBOutlet weak var temperatureType: UISegmentedControl!
     
-    var dailyList : [DailyResult] = []
+    //var dailyList : [DailyResult] = []
+    let forecastVM = WeatherViewModel()
+    
     
     var lat = 0.0
     var lon = 0.0
@@ -27,9 +29,7 @@ class DailyVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-
         DispatchQueue.main.asyncAfter(deadline: .now()+1){
             self.activityIndicator.stopAnimating()
             self.table.isHidden = false
@@ -42,13 +42,20 @@ class DailyVC: UIViewController {
         table.dataSource = self
         
         //design table
-        table.separatorColor = .blue
+        table.separatorStyle = .none
+        //table.separatorColor = .blue
         table.showsVerticalScrollIndicator = false
         
-        AFUtility.instance.getDailyForecast(Lat: lat, Long: lon) { data in
-            self.dailyList = data.daily
+        print("Lat in DailyVc \(lat)")
+//        AFUtility.instance.getDailyForecast(Lat: lat, Long: lon) { data in
+//            self.dailyList = data.daily
+//            self.table.reloadData()
+//        }
+        forecastVM.sevenDayForecast(Lat: lat, Long: lon) {
+            print("Seven day forecast")
             self.table.reloadData()
         }
+        
         //background image
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "Night")
@@ -80,14 +87,16 @@ extension DailyVC : UITableViewDelegate{
 
 extension DailyVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dailyList.count
+        //return dailyList.count
+        return forecastVM.dailyList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "daily", for: indexPath) as! DailyTVC
         
         
-        let std = dailyList[indexPath.row]
+        //let std = dailyList[indexPath.row]
+        let std = forecastVM.dailyList[indexPath.row]
         if celsius {
             cell.MinTempLabel.text = "Min Temp : \(std.temp.min) \u{00B0}C"
             cell.MaxTempLabel.text = "Max Temp : \(std.temp.max) \u{00B0}C"
@@ -104,7 +113,10 @@ extension DailyVC: UITableViewDataSource{
         cell.HumidityLabel.text = "Humidity : \(std.humidity)"
         
         let imgURL = "http://openweathermap.org/img/wn/\(std.weather[0].icon)@2x.png"
-        AFUtility.instance.downloadImage(imgURL: imgURL) { (imgData) in
+//        AFUtility.instance.downloadImage(imgURL: imgURL) { (imgData) in
+//            cell.iconL.image = UIImage(data: imgData)
+//        }
+        forecastVM.getImages(imgURL: imgURL) { (imgData) in
             cell.iconL.image = UIImage(data: imgData)
         }
         return cell

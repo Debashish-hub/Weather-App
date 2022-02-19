@@ -17,10 +17,12 @@ class HourlyVC: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var hourlyList : [HourlyResult] = []
+    //var hourlyList : [HourlyResult] = []
+    let forecastVM = WeatherViewModel()
     
     var lat = 0.0
     var lon = 0.0
+    var city = ""
     
     var celsius = true
     
@@ -42,14 +44,20 @@ class HourlyVC: UIViewController {
         table.dataSource = self
         
         //design table
-        table.separatorColor = .blue
+        table.separatorStyle = .none
+        //table.separatorColor = .blue
         table.showsVerticalScrollIndicator = false
         
         
-        AFUtility.instance.getHourlyData(Lat: lat, Long: lon) { data in
-            self.hourlyList = data.hourly
+//        AFUtility.instance.getHourlyData(Lat: lat, Long: lon) { data in
+//            self.hourlyList = data.hourly
+//            self.table.reloadData()
+//        }
+        forecastVM.hourlyForecast(Lat: lat, Lon: lon) {
+            print("Hourly Forecast")
             self.table.reloadData()
         }
+        
         //background image
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "Night")
@@ -79,14 +87,16 @@ extension HourlyVC : UITableViewDelegate{
 
 extension HourlyVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hourlyList.count - 24
+        //return hourlyList.count - 24
+        return forecastVM.hourlyList.count - 24
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourly", for: indexPath) as! HourlyTVC
         
         
-        let std = hourlyList[indexPath.row]
+        //let std = hourlyList[indexPath.row]
+        let std = forecastVM.hourlyList[indexPath.row]
         if celsius{
             cell.maxTemperature.text = "Temp : \(std.temp) \u{00B0} C"
         }else{
@@ -99,10 +109,12 @@ extension HourlyVC: UITableViewDataSource{
         cell.humidityLabel.text = "Humidity : \(std.humidity)"
         
         let imgURL = "http://openweathermap.org/img/wn/\(std.weather[0].icon)@2x.png"
-        AFUtility.instance.downloadImage(imgURL: imgURL) { (imgData) in
+//        AFUtility.instance.downloadImage(imgURL: imgURL) { (imgData) in
+//            cell.iconLabel.image = UIImage(data: imgData)
+//        }
+        forecastVM.getImages(imgURL: imgURL) { (imgData) in
             cell.iconLabel.image = UIImage(data: imgData)
         }
-        
         return cell
     }
 }

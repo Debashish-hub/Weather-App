@@ -105,24 +105,10 @@
 				D38DB29927BE7E9A0019526E /* Model */,
 				D3C0CBCB27BFFD5900B7C06C /* View */,
 				D3B83F3127C0CC0A001FF849 /* View Model */,
-				D38DB29627BE692A0019526E /* Controller */,
 				D31BE09E27BE1CC1008EE7DE /* Assets.xcassets */,
 				D31BE0A327BE1CC1008EE7DE /* Info.plist */,
 			);
 			path = Project;
-			sourceTree = "<group>";
-		};
-		D38DB29627BE692A0019526E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D31BE09927BE1CC0008EE7DE /* ViewController.swift */,
-				D38DB29A27BE88890019526E /* WeatherTodayVC.swift */,
-				D38DB29E27BEA1190019526E /* DailyVC.swift */,
-				D38DB2A427BEAC2D0019526E /* DailyTVC.swift */,
-				D38DB2A027BEA12E0019526E /* HourlyVC.swift */,
-				D3C0CBC327BF400000B7C06C /* HourlyTVC.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		D38DB29927BE7E9A0019526E /* Model */ = {
@@ -149,6 +135,12 @@
 			children = (
 				D31BE09B27BE1CC0008EE7DE /* Main.storyboard */,
 				D31BE0A027BE1CC1008EE7DE /* LaunchScreen.storyboard */,
+				D31BE09927BE1CC0008EE7DE /* ViewController.swift */,
+				D38DB29A27BE88890019526E /* WeatherTodayVC.swift */,
+				D38DB29E27BEA1190019526E /* DailyVC.swift */,
+				D38DB2A427BEAC2D0019526E /* DailyTVC.swift */,
+				D38DB2A027BEA12E0019526E /* HourlyVC.swift */,
+				D3C0CBC327BF400000B7C06C /* HourlyTVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

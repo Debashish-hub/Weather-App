@@ -22,6 +22,14 @@ class WeatherViewModel {
         }
     }
     
+    //getting data for today
+    func todayForecast(Lat : Double, Lon : Double, completion : @escaping() -> Void) {
+        viewModel.getToday(Lat: Lat, Long: Lon) { (data) in
+            self.today = data.current
+            completion()
+        }
+    }
+    
     //getting hourly forecast and updating hourlyList
     func hourlyForecast(Lat : Double, Lon : Double , completion : @escaping() -> Void ){
         viewModel.getHourlyData(Lat: Lat, Long: Lon) { data in
@@ -31,5 +39,11 @@ class WeatherViewModel {
     }
     
     //getting daily forecast and updating dailyList
-
+    func sevenDayForecast(Lat : Double, Long : Double, completion: @escaping() -> Void){
+        viewModel.getDailyForecast(Lat: Lat, Long: Long) { data in
+            self.dailyList = data.daily
+            completion() 
+        }
+    }
+    
 }
