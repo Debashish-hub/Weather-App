@@ -1,0 +1,6 @@
+framework module LocationFound {
+  umbrella header "LocationFound-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -36,4 +36,7 @@ class weatherUtility{
         return formattedTime
     }
     
+    func convertTempFromCtoF(temp : Double) -> Float{
+        return Float(temp * 1.8 + 32)
+    }
 }

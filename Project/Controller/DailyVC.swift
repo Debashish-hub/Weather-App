@@ -28,8 +28,7 @@ class DailyVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        table.backgroundView = UIImageView(image: UIImage(named: "H3"))
+        
 
         DispatchQueue.main.asyncAfter(deadline: .now()+1){
             self.activityIndicator.stopAnimating()
@@ -52,7 +51,7 @@ class DailyVC: UIViewController {
         }
         //background image
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "H1")
+        backgroundImage.image = UIImage(named: "Night")
         backgroundImage.contentMode = .scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
         

@@ -25,12 +25,12 @@ class ViewController: UIViewController {
     
     //let lUtility = LocationManager.instance // instance of LocationManager
     let lUtility = LocationFound.LocationManager() //getting from framework
+    
+    //city name to be enterd or picked or located
     var ChoosenCity = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
         //background image
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "H2")
@@ -40,6 +40,7 @@ class ViewController: UIViewController {
         //making the button inviseble initially, button will be visible after entering city
         checkWeatherBtn.isEnabled = false
         
+        //textfield
         enteredCity.delegate = self
         
         //for pickerview
@@ -128,14 +129,6 @@ extension ViewController: UITextFieldDelegate {
             checkWeatherBtn.isEnabled = true
             yourCity.text = "Your city : \(city.capitalized)"
             self.ChoosenCity = city.capitalized
-//            LocationManager.instance.getGeoCoord(address: city) { (loc) in
-//                if loc.coordinate.latitude >= -180 && loc.coordinate.longitude <= 180{
-//
-//                }else{
-//                    self.showAlert()
-//                }
-//
-//            }
         }
         enteredCity.text = ""
     }

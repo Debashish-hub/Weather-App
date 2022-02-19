@@ -98,7 +98,7 @@ class WeatherTodayVC: UIViewController {
                     self.view.insertSubview(backgroundImage, at: 0)
                 }else if self.temp > 16{
                     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-                    backgroundImage.image = UIImage(named: "Night")
+                    backgroundImage.image = UIImage(named: "Normal")
                     backgroundImage.contentMode = .scaleAspectFill
                     self.view.insertSubview(backgroundImage, at: 0)
                 }else{

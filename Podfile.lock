@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (5.5.0)
+  - LocationFound (0.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - LocationFound
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - LocationFound
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  LocationFound: 934052aecb897df690580285eb8d8811515d07e1
+
+PODFILE CHECKSUM: 12910b562b5cc15e72222be661a4469f963e3d41
+
+COCOAPODS: 1.11.2

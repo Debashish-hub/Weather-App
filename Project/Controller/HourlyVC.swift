@@ -52,7 +52,7 @@ class HourlyVC: UIViewController {
         }
         //background image
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "H3")
+        backgroundImage.image = UIImage(named: "Night")
         backgroundImage.contentMode = .scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
     }
@@ -98,17 +98,10 @@ extension HourlyVC: UITableViewDataSource{
         cell.descriptionLabel.text = std.weather[0].description.capitalized
         cell.humidityLabel.text = "Humidity : \(std.humidity)"
         
-        let imgURL = "http://openweathermap.org/img/wn/\(std.weather[0].icon)@2x.png"// HTTP does not work
+        let imgURL = "http://openweathermap.org/img/wn/\(std.weather[0].icon)@2x.png"
         AFUtility.instance.downloadImage(imgURL: imgURL) { (imgData) in
             cell.iconLabel.image = UIImage(data: imgData)
         }
-        //cell.iconL.image = UIImage(named: "person")
-//        cell.humidityLabel.text = "Humidity : 80%"
-//        cell.maxTemperature.text = "Temp : 35° C"
-//        cell.timeLabel.text = "07.30 PM"
-//        cell.windspeedLabel.text = "Wind Speed : 5.32"
-//        cell.descriptionLabel.text = "light rain"
-        
         
         return cell
     }
