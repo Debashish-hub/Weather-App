@@ -184,12 +184,18 @@ class WeatherTodayVC: UIViewController {
     }
     
     func showAlert(){
+        //blurr effect in background
+        let blurr = UIBlurEffect(style: .dark)
+        let blurView = UIVisualEffectView(effect: blurr)
+        blurView.frame = view.bounds
+        
         let alert = UIAlertController(title: "Error!!", message: "Please Enter a Correct City", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { action in
             self.navigationController?.popViewController(animated: true)
+            blurView.removeFromSuperview()
             print("Tapped")
         }))
-        
+        view.addSubview(blurView)
         present(alert, animated: true, completion: nil)
     }
 }

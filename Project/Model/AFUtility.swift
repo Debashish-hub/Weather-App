@@ -107,6 +107,4 @@ class AFUtility{
             }
         }
     }
-    
-// End of Class AFutility
 }
