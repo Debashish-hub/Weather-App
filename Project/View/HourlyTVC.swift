@@ -9,6 +9,7 @@ import UIKit
 
 class HourlyTVC: UITableViewCell {
 
+    @IBOutlet weak var bgView: UIView!
     
     @IBOutlet weak var iconLabel: UIImageView!
     

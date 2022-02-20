@@ -10,6 +10,8 @@ import UIKit
 class DailyTVC: UITableViewCell {
 
     
+    @IBOutlet weak var bgView: UIView!
+    
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var iconL: UIImageView!

@@ -43,7 +43,7 @@ class DailyVC: UIViewController {
         
         //design table
         table.separatorStyle = .none
-        //table.separatorColor = .blue
+        //table.separatorColor = .black
         table.showsVerticalScrollIndicator = false
         
         print("Lat in DailyVc \(lat)")
@@ -119,6 +119,14 @@ extension DailyVC: UITableViewDataSource{
         forecastVM.getImages(imgURL: imgURL) { (imgData) in
             cell.iconL.image = UIImage(data: imgData)
         }
+        
+        //design cell
+        cell.iconL.layer.cornerRadius = cell.iconL.frame.height / 2
+        cell.iconL.layer.borderColor = CGColor.init(red: 10, green: 10, blue: 10, alpha: 0.5)
+        cell.iconL.layer.borderWidth = 1.0
+        
+        cell.bgView.layer.cornerRadius = 30
+        
         return cell
     }
 }

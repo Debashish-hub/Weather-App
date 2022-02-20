@@ -45,7 +45,7 @@ class HourlyVC: UIViewController {
         
         //design table
         table.separatorStyle = .none
-        //table.separatorColor = .blue
+        //table.separatorColor = .black
         table.showsVerticalScrollIndicator = false
         
         
@@ -115,6 +115,13 @@ extension HourlyVC: UITableViewDataSource{
         forecastVM.getImages(imgURL: imgURL) { (imgData) in
             cell.iconLabel.image = UIImage(data: imgData)
         }
+        //design cell
+        cell.iconLabel.layer.cornerRadius = cell.iconLabel.frame.height / 2
+        cell.iconLabel.layer.borderColor = CGColor.init(red: 10, green: 10, blue: 10, alpha: 0.5)
+        cell.iconLabel.layer.borderWidth = 1.0
+        
+        cell.bgView.layer.cornerRadius = 30
+        
         return cell
     }
 }
