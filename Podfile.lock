@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.5.0)
   - LocationFound (0.1.0)
+  - weatherTime (0.1.0)
 
 DEPENDENCIES:
   - Alamofire
   - LocationFound
+  - weatherTime
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - LocationFound
+    - weatherTime
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   LocationFound: 934052aecb897df690580285eb8d8811515d07e1
+  weatherTime: 0c52ff4c830f8ac2ccadbda7c1ec89f48542cda6
 
-PODFILE CHECKSUM: 12910b562b5cc15e72222be661a4469f963e3d41
+PODFILE CHECKSUM: 0ff241db59831d459957a5f2a8dd40157b167978
 
 COCOAPODS: 1.11.2

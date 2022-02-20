@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         wVC.city = ChoosenCity
     }
 
-
+    //getting location details
     @IBAction func getLocationClicked(_ sender: Any) {
         if lUtility.startTracking() {
             print("Tracking Started")
@@ -67,6 +67,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //updating location and label
     func updateInfo() {
         lUtility.getCurrentAddress { (addr) in
             print("Current Address: \(addr)")

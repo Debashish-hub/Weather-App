@@ -1,0 +1,6 @@
+framework module weatherTime {
+  umbrella header "weatherTime-umbrella.h"
+
+  export *
+  module * { export * }
+}

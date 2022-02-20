@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import weatherTime
 
 class DailyVC: UIViewController {
     
@@ -25,7 +26,9 @@ class DailyVC: UIViewController {
     var lon = 0.0
     var city = ""
     var celsius = true
-    var LDate = weatherUtility()
+    
+    //var LDate = weatherUtility()
+    var LDate = weatherTime.weatherUtility() //from framework
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,6 +7,7 @@
 
 import UIKit
 import LocationFound
+import weatherTime
 
 class WeatherTodayVC: UIViewController {
     
@@ -35,7 +36,8 @@ class WeatherTodayVC: UIViewController {
     
     @IBOutlet weak var sunsetLabel: UILabel! //sunset
     
-    var LDate = weatherUtility()
+    //var LDate = weatherUtility()
+    var LDate = weatherTime.weatherUtility()
     
     //var today : Current?
     let forecastVM = WeatherViewModel()

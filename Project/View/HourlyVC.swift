@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import weatherTime
 
 class HourlyVC: UIViewController {
 
@@ -26,7 +27,8 @@ class HourlyVC: UIViewController {
     
     var celsius = true
     
-    var LDate = weatherUtility()
+    //var LDate = weatherUtility()
+    var LDate = weatherTime.weatherUtility() //from framework
     
     override func viewDidLoad() {
         super.viewDidLoad()

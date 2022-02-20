@@ -7,9 +7,11 @@
 
 import Foundation
 
-class weatherUtility{
-    
-    func getTime(dt:Double)->String{
+public class weatherUtility{
+    public init(){
+        
+    }
+    public func getTime(dt:Double)->String{
         let date = Date(timeIntervalSince1970: dt)
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
@@ -19,14 +21,14 @@ class weatherUtility{
     }
     
     
-    func getDate(dt:Double)->String{
+    public func getDate(dt:Double)->String{
         let formatter = DateFormatter()
         formatter.dateFormat =  "E, MMM, d"//"dd MM yyyy"
         let  stringDate = formatter.string(from: Date(timeIntervalSince1970: TimeInterval(dt)))
         return stringDate
     }
     
-    func sunTime(time : Double) -> String {
+    public func sunTime(time : Double) -> String {
         let sun = Date(timeIntervalSince1970:  time)
         let formatter = DateFormatter()
         formatter.dateStyle = .none
@@ -36,7 +38,5 @@ class weatherUtility{
         return formattedTime
     }
     
-    func convertTempFromCtoF(temp : Double) -> Float{
-        return Float(temp * 1.8 + 32)
-    }
+
 }
