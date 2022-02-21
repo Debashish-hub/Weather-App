@@ -8,7 +8,7 @@ In this app you will get 3 different options to select your location. Once you s
 ### Make sure to add your api in AFUtility File  (Project -> Model -> AFUtility)
 
 ## Framework
-We have created two frameworks in our app
+We have created two frameworks to use in our app
 
 https://cocoapods.org/pods/weatherTime
 
