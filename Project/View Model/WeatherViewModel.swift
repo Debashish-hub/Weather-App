@@ -12,19 +12,19 @@ class WeatherViewModel {
     var hourlyList : [HourlyResult] = []
     var today : Current?
     
-    let viewModel = AFUtility.instance //strong reference model
+    let model = AFUtility.instance //strong reference model
     
     
     //Downloading Images
     func getImages(imgURL : String, completion : @escaping (Data) -> Void ) {
-        viewModel.downloadImage(imgURL: imgURL) { Data in
+        model.downloadImage(imgURL: imgURL) { Data in
             completion(Data)
         }
     }
     
     //getting data for today
     func todayForecast(Lat : Double, Lon : Double, completion : @escaping() -> Void) {
-        viewModel.getToday(Lat: Lat, Long: Lon) { (data) in
+        model.getToday(Lat: Lat, Long: Lon) { (data) in
             self.today = data.current
             completion()
         }
@@ -32,7 +32,7 @@ class WeatherViewModel {
     
     //getting hourly forecast and updating hourlyList
     func hourlyForecast(Lat : Double, Lon : Double , completion : @escaping() -> Void ){
-        viewModel.getHourlyData(Lat: Lat, Long: Lon) { data in
+        model.getHourlyData(Lat: Lat, Long: Lon) { data in
             self.hourlyList = data.hourly
             completion()
         }
@@ -40,7 +40,7 @@ class WeatherViewModel {
     
     //getting daily forecast and updating dailyList
     func sevenDayForecast(Lat : Double, Long : Double, completion: @escaping() -> Void){
-        viewModel.getDailyForecast(Lat: Lat, Long: Long) { data in
+        model.getDailyForecast(Lat: Lat, Long: Long) { data in
             self.dailyList = data.daily
             completion() 
         }
