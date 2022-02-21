@@ -111,7 +111,7 @@ extension ViewController: UITextFieldDelegate {
         if textField.text != "" {
             return true
         } else {
-            textField.placeholder = "Enter Your City"
+            textField.placeholder = "Enter City"
             return false
         }
     }
