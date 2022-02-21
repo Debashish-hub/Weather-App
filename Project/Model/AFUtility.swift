@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 class AFUtility{
-    let apikey = "550040b2f0736f744e56e78efb1ac593"
+    let apikey = ""
     private init(){}
     
     static var instance  = AFUtility()
